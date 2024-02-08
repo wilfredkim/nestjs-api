@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  nextjs-postgres:
+    image: postgres
+    container_name: next_js_postgres_db
+    restart: always
+    ports:
+      - '5435:5435'
+    expose:
+      - '5435'
+    volumes:
+      - payroll_system_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Adm!n123$
+      - POSTGRES_DB=next_js_api_db
+volumes:
+  payroll_system_data:
+networks:
+  backend-network:
