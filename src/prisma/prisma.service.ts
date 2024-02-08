@@ -5,6 +5,12 @@ import { PrismaClient } from '@prisma/client';
 export class PrismaService extends PrismaClient {
 
     constructor() {
-        super()
+        super({
+            datasources: {
+                db: {
+                    url: 'postgresql://admin:Adm!n123$@localhost:5432/next_js_api_db'
+                }
+            }
+        })
     }
 }
