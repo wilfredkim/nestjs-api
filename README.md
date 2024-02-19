@@ -76,4 +76,4 @@ Nest is [MIT licensed](LICENSE).
 
 ## Prisma
 # migration
-$ npm prisma migrate dev
+$ npx prisma migrate dev
