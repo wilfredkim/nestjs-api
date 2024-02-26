@@ -6,11 +6,10 @@ import { BookmarkModule } from './bookmark/bookmark.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UserModule, BookmarkModule, PrismaModule,
-    // ConfigModule.forRoot({   isGlobal: true })]
-  ],
+  imports: [UserModule, BookmarkModule, PrismaModule, AuthModule],
   controllers: [AuthController],
   providers: [AuthService]
 })

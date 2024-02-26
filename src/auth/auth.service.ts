@@ -1,24 +1,22 @@
-import { Injectable } from "@nestjs/common";
-import { AuthDto } from "./dto";
-import { PrismaService } from "src/prisma/prisma.service";
+import {
+    ForbiddenException,
+    Injectable,
+} from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { AuthDto } from './dto';
 import * as argon from 'argon2';
+import { JwtService } from '@nestjs/jwt';
 
-
-
-
-import { ForbiddenException } from "@nestjs/common";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import { JwtService } from "@nestjs/jwt";
 import { env } from "process";
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class AuthService {
 
     constructor(
         private prisma: PrismaService,
-        private jwt: JwtService
+        private jwt: JwtService,
     ) { }
-
     async login(authDto: AuthDto) {
         const user =
             await this.prisma.user.findUnique({
