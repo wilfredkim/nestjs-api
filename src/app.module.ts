@@ -9,8 +9,9 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UserModule, BookmarkModule, PrismaModule, AuthModule],
-  controllers: [AuthController],
-  providers: [AuthService]
+  imports: [AuthModule,
+    UserModule,
+    BookmarkModule,
+    PrismaModule,]
 })
 export class AppModule { }
